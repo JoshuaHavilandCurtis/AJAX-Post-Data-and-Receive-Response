@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Post Data and Receive Response</title>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    <input type="text" id="idTxt">
+    <input type="button" id="sendData" value="Send">
+
+    <script>
+
+        document.querySelector('#sendData').addEventListener('click', myFunction);
+
+        function myFunction() {
+            let text = document.querySelector('#idTxt').value;
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    document.querySelector('#output').innerHTML = this.responseText;
+                }
+            }
+            xhr.open("POST", "post.php", true);
+            xhr.send("name="+txt+"&age=50");
+        }
+
+    </script>
+    
+</body>
+</html>
